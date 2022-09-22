@@ -13,7 +13,7 @@ class MailService {
     });
   }
 
-  async sendCode({ username, phone }) {
+  async sendCode({ username, phone, age }) {
     return await this.transporter.sendMail({
       from: process.env.SMTP_USER,
       to: process.env.SMTP_USER,
@@ -22,6 +22,9 @@ class MailService {
       html: `
         <div>
           <h1>Мы Вам обязательно перезвоним ${username}</h1>
+
+          <p> Имя: ${username} </p>
+          <p> Возвраст: ${age} </p>
         </div>
       `,
     });
